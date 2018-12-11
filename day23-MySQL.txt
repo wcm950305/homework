@@ -1,0 +1,46 @@
+第2题.单表查询练习
+第一部分：
+1.select count(*),tname from teacher where tname='李老师';
+2.select count(*),sex from student group by sex;
+3.select count(*),sname from student group by sname;
+4.select * from student where birthday>='1981-1-1' and  birthday<='1981-12-31';
+5.select sid,avg(score) from sc group by sid having avg(score)>60 order by avg(score) desc;
+6.select count(*),cid from sc group by cid;
+7.select count(*),sid,cid from sc group by cid having count(*)>=2 order by count(*) asc;
+8.select cid,max(score),min(score) from sc group by cid;
+9.select cid,count(*) from sc group by cid order by count(*) desc,cid asc; 
+
+第二部分：针对部门员工表
+1.select * from emp where (year(now())-year(hiredate)) > 38;
+2.select *  from emp where month(hiredate)=month(now());
+3. select *  from emp where month(date_add(hiredate,interval 1 month))=month(date_add(now(),interval 1 month));
+4. select * from emp where year(hiredate)='1980' and month(hiredate)>6;
+5.（a）select empno,ename from emp where char_length(ename)=4;
+  （b）select empno,ename from emp where length(ename)=4;
+6.select job,min(sal) from emp group by job;
+7.select count(*),month(hiredate) from emp  where year(hiredate)='1980' group by month(hiredate);
+8.select deptno,max(sal) from emp group by deptno;
+9.select deptno,job,max(sal) from emp group by deptno,job;
+10.select deptno,sum(sal),avg(sal) from emp group by deptno;
+11.(a)select deptno,avg(sal) from emp group by deptno having deptno=10 or deptno=20;
+   (b)select deptno,avg(sal) from emp where deptno=10 or deptno=20 group by deptno;
+12.select deptno,avg(sal) from emp group by deptno having avg(sal) >2000;
+13.select count(*),job from emp where job='MANAGER';
+14.select * from emp order by sal desc limit 3;
+15.select * from emp order by sal desc limit 5,5;
+
+第3题：表连接查询练习
+1. select sid,s.cid,c.cid,score,cname,c.tid,t.tid,tname from sc s inner join course c on s.cid=c.cid inner join teacher t on c.tid=t.tid where sid=1002;
+2.select s.cid,cname from sc s inner join course c on s.cid=c.cid where s.cid not in(select cid from sc s inner join student st on s.sid=st.sid where sname='王五') group by s.cid;
+3.select s.sid,sname,count(*),sum(score) from student s inner join sc s1 on s.sid=s1.sid group by s.sid;
+4.select sid,sname from student where sid not in(select sid from sc where score>60);
+5.select sid,sname from student where sid not in(select sid from sc group by cid having count(*)=7);
+6.select cname,count(*) from sc s inner join course c on s.cid=c.cid group by s.cid;
+7.select s.sid,sname from sc s inner join student st on s.sid=st.sid group by s.sid having count(*)=1;
+8.select s.cid,cname,avg(score) from sc s inner join course c on s.cid=c.cid group by s.cid order by avg(score) asc,s.cid desc;
+9.select s.sid,st.sname,avg(score) from sc s inner join student st on s.sid=st.sid  group by s.sid having avg(score)>80;
+10.select s.sid,s1.sid,s.cid,s1.cid,s.score,s1.score from sc s,sc s1 where s.sid!=s1.sid and s1.sid!=s.sid and s.cid=s1.cid and s.score=s1.score;
+11.select s.cid,cname from sc s inner join course c on s.cid=c.cid group by cid having count(*)=7;
+12.select sid,avg(score) from sc group by sid having sum(score<60)>2;
+
+
