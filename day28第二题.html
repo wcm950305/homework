@@ -1,0 +1,95 @@
+﻿<html>
+ <head>
+  <title>d28作业</title>
+  <script>
+  function fun(){
+   var pattern=/^\w{2,15}$/;
+   var username=document.getElementById("name").value;
+   if(pattern.test(username)){
+	console.log("用户名输入正确");
+	document.getElementById("s").innerText="用户名输入正确";
+   }else{
+    console.log("用户名输入不正确");
+	document.getElementById("s").innerText="用户名输入不正确";
+   }
+  }
+  //(?![a-zA-Z]+$)排除字母
+  function fun1(){
+  var p1=/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}$/;//?=.*不能匹配任意字符
+  var p2=/^((?=.*\d)(?=.*[a-zA-Z]))|((?=.*\d)(?=.*[\W_]))|((?=.*[a-zA-Z])(?=.*[\W_])).{6,}$/;
+  var v=document.getElementById("password").value;
+  if(p1.test(v)){
+	console.log("高强度密码");
+	document.getElementById("s1").innerText="高强度密码";
+  }else if(p2.test(v)){
+	console.log("中强度密码");
+	document.getElementById("s1").innerText="中强度密码";
+  }else{
+  console.log("低强度密码");
+  document.getElementById("s1").innerText="低强度密码";
+  }
+  }
+  var i=60;
+  function fun2(){
+	if(i!=0){
+	  setTimeout(function(){
+		console.log("发送短信");
+		document.getElementById("click").value=i--+"s后再发送";
+		document.getElementById("click").disabled=true;
+		fun2();
+	  },1000);
+	}else{
+	document.getElementById("click").value="发送短信";
+	document.getElementById("click").disabled=false;
+	}
+  }
+  function validate() {
+    if (confirm("提交表单?")) {
+      return true;
+    } else {
+      return false;
+    }
+   }
+  function fun3(){
+     if (validate()) {
+      document.getElementByIdx_x("myForm").submit();
+    }
+  }
+  </script>
+  <style>
+    #logo{text-align:center;border:solid 2px rgb(245,245,245);margin:150px;width:500px;}
+  </style>
+ </head>
+ <body>
+  <div id="logo">
+   <form action="http://www.baidu.com" id="myForm">
+    <br>
+    用户名 <input type="text" name="username" id="name" onblur=fun()> <span id="s"></span>
+    <br>
+	<br>
+    密码 <input type="password" name="password" id="password" onblur=fun1()> <span id="s1"></span>
+	<br>
+	<br>
+	<input type="text" name="message" id="message">
+	<input type="button" name="button" value="发送短信" id="click"  onclick=fun2()> 
+	<br>
+	<br>
+	许可协议
+	<br>
+	<input type="checkbox" name="choose" value="同意协议" checked>同意协议
+	<input type="checkbox" name="choose" value="不同意协议">不同意协议
+	<br>
+	<br>
+	<input type="submit" id="submit" value="注册" onclick=fun3()>
+   </form>
+  </div>
+ </body>
+</html>
+
+
+
+
+
+
+
+
