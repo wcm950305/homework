@@ -34,7 +34,6 @@ public class TestTreasure {
                 if (decl.length >=1) {
                     method.invoke(dx);
                 } else {
-
                 }
             }
         }

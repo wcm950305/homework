@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/19-设计模式/19-设计模式.iml" filepath="$PROJECT_DIR$/19-设计模式/19-设计模式.iml" />
       <module fileurl="file://$PROJECT_DIR$/day20-挖宝藏/day20-挖宝藏.iml" filepath="$PROJECT_DIR$/day20-挖宝藏/day20-挖宝藏.iml" />
       <module fileurl="file://$PROJECT_DIR$/day21-stream流/day21-stream流.iml" filepath="$PROJECT_DIR$/day21-stream流/day21-stream流.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day29-服务器/day29-服务器.iml" filepath="$PROJECT_DIR$/day29-服务器/day29-服务器.iml" />
     </modules>
   </component>
 </project>
